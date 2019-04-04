@@ -4,7 +4,7 @@ import re
 from collections import namedtuple
 
 
-ASCII_BYTE = " !\"#\$%&\'\(\)\*\+,-\./0123456789:;<=>\?@ABCDEFGHIJKLMNOPQRSTUVWXYZ\[\]\^_`abcdefghijklmnopqrstuvwxyz\{\|\}\\\~\t"
+ASCII_BYTE = " !\"#\$%&\'\(\)\*\+,-\./0123456789:;<=>\?@ABCDEFGHIJKLMNOPQRSTUVWXYZ\[\]\^_`abcdefghijklmnopqrstuvwxyz\{\|\}\\\~\t"  # noqa
 ASCII_RE_4 = re.compile("([%s]{%d,})" % (ASCII_BYTE, 4))
 UNICODE_RE_4 = re.compile(b"((?:[%s]\x00){%d,})" % (ASCII_BYTE, 4))
 REPEATS = ["A", "\x00", "\xfe", "\xff"]
@@ -23,7 +23,7 @@ def buf_filled_with(buf, character):
 
 
 def extract_ascii_strings(buf, n=4):
-    '''
+    """
     Extract ASCII strings from the given binary data.
 
     :param buf: A bytestring.
@@ -31,7 +31,7 @@ def extract_ascii_strings(buf, n=4):
     :param n: The minimum length of strings to extract.
     :type n: int
     :rtype: Sequence[String]
-    '''
+    """
 
     if not buf:
         return
@@ -50,7 +50,7 @@ def extract_ascii_strings(buf, n=4):
 
 
 def extract_unicode_strings(buf, n=4):
-    '''
+    """
     Extract naive UTF-16 strings from the given binary data.
 
     :param buf: A bytestring.
@@ -58,7 +58,7 @@ def extract_unicode_strings(buf, n=4):
     :param n: The minimum length of strings to extract.
     :type n: int
     :rtype: Sequence[String]
-    '''
+    """
 
     if not buf:
         return
